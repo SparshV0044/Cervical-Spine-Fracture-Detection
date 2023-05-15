@@ -26,8 +26,8 @@ def upload():
         print('-----------',extracted_string)
 
 
-    csv_file = "C:\\Users\\spars\\Desktop\\flask\\submission.csv"  # Replace with the path to your CSV file
-    images ="C:\\Users\\spars\\Desktop\\flask\\static\\images"
+    csv_file = "C:\\Users\\spars\\Desktop\\Cervical Spine\\Cervical-Spine-Fracture-Detection\\submission.csv"  # Replace with the path to your CSV file
+    images = "C:\\Users\\spars\\Desktop\\Cervical Spine\\Cervical-Spine-Fracture-Detection\\static\\images"
     rows = []
     with open(csv_file, 'r') as file:   
         csv_reader = csv.reader(file)
