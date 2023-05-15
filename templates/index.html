@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Folder Upload</title>
+  </head>
+  <body>
+    <h1>Upload Folder</h1>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <input
+        type="file"
+        name="folder_name"
+        webkitdirectory
+        directory
+        multiple
+      />
+      <input type="submit" value="Upload" />
+    </form>
+  </body>
+</html>

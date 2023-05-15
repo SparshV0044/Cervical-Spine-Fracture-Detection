@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Results</title>
+  </head>
+  <body>
+    <h1>Results</h1>
+    <table>
+      <tr>
+        <th>StudyInstanceUID</th>
+        <th>patient_overall</th>
+        <th>C1</th>
+        <th>C2</th>
+        <th>C3</th>
+        <th>C4</th>
+        <th>C5</th>
+        <th>C6</th>
+        <th>C7</th>
+      </tr>
+      {% for row in rows %}
+      <tr>
+        {% for column in row %}
+        <td>{{ column }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+    {% if image_file %}
+    <img
+      src="{{ url_for('static', filename='images/' + image_file) }}"
+      alt="Image"
+    />
+    {% else %}
+    <p>No image found.</p>
+    {% endif %}
+  </body>
+</html>
