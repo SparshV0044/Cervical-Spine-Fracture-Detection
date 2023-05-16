@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cervical Spine Fracture Detection</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../static/css/result.css" />
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top"
+      id="main"
+    >
+      <a class="navbar-brand" href="{{url_for('index')}}"
+        >Cervical Spine Fracture Detection</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto d-flex">
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('index')}}">Home</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="jumbotron" id="image">
+      <h1 class="result-heading">Results</h1>
+      <table class="results-table">
+        <tr>
+          <th>Id</th>
+          <th>StudyInstanceUID</th>
+          <th>patient_overall</th>
+          <th>C1</th>
+          <th>C2</th>
+          <th>C3</th>
+          <th>C4</th>
+          <th>C5</th>
+          <th>C6</th>
+          <th>C7</th>
+        </tr>
+        {% for row in rows %}
+        <tr>
+          {% for column in row %}
+          <td>{{ column }}</td>
+          {% endfor %}
+        </tr>
+        {% endfor %}
+      </table>
+      {% if image_file %}
+      <div class="image-container">
+        <img
+          src="{{ url_for('static', filename='images/' + image_file) }}"
+          alt="Image"
+        />
+      </div>
+      {% else %}
+      <p>No image found.</p>
+      {% endif %}
+    </div>
+  </body>
+</html>

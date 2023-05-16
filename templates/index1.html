@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Cervical Spine Fracture Detection</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../static/css/style.css" />
+  </head>
+  <body>
+    <!--Navbar-->
+    <nav
+      class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top"
+      id="main"
+    >
+      <a class="navbar-brand" href="{{url_for('index')}}"
+        >Cervical Spine Fracture Detection</a
+      >
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarNav"
+        aria-controls="navbarNav"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto d-flex">
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('index')}}">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#purpose">Purpose</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#background">Background</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#data">Dataset & Model</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div id="loading" class="hidden">
+      <div class="spinner"></div>
+    </div>
+
+    <!--Main Upload-->
+    <section class="main">
+      <div class="jumbotron jumbotron-fluid bg-transparent">
+        <div class="container">
+          <h1 class="display-4">Cervical Spine Fracture Detection</h1>
+          <p class="lead">
+            Upload your medical images and get instant results.
+          </p>
+          <form action="/upload" method="post" enctype="multipart/form-data">
+            <input
+              type="file"
+              name="folder_name"
+              webkitdirectory
+              directory
+              multiple
+            />
+            <button id="myButton">
+              <input type="submit" value="Upload" />
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!--Purpose-->
+    <section class="purpose text-justify">
+      <div class="container" id="purpose">
+        <div class="row">
+          <div class="col-lg-6">
+            <h1>Purpose</h1>
+            <p>
+              The most common site of spine fracture is the cervical spine.
+              There has been a rise in the incidence of spinal fractures in the
+              elderly and in this population, fractures can be more difficult to
+              detect on imaging due to superimposed degenerative disease and
+              osteoporosis. Imaging diagnosis of adult spine fractures is now
+              almost exclusively performed with computed tomography (CT) instead
+              of radiographs (x-rays). Quickly detecting and determining the
+              location of any vertebral fractures is essential to prevent
+              neurologic deterioration and paralysis after trauma.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <img src="../static/images/cspine.png" alt="Spine Image" />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!--Background-->
+    <section class="background text-justify">
+      <div class="container" id="background">
+        <div class="row">
+          <div class="col-lg-6">
+            <h1>Background</h1>
+            <p>
+              We want to compare AI performance to radiologist performance
+              without the aid of the tool. A proficient algorithm may help
+              identify and triage studies for the radiologist to review more
+              urgently, helping to ensure faster diagnoses. We need to predict
+              the probability of fracture for each of the seven cervical
+              vertebrae denoted by C1, C2, C3, C4, C5, C6 and C7 as well as an
+              overall probability of any fractures in the cervical spine. Note
+              that fractures in the skull base, thoracic spine, ribs, and
+              clavicles are ignored.
+            </p>
+            <p>
+              The motivation to use AI for this task is that a quick diagnosis
+              can reduce the chance of neurologic deterioration and paralysis
+              after trauma.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <img src="../static/images/Picture1.jpg" alt="spine image" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--DataSet and algorithm-->
+    <section class="model text-justify p-5">
+      <div class="container" id="data">
+        <div class="row">
+          <div class="col-lg-6">
+            <h1>Model & Dataset</h1>
+            <p>
+              The dataset we are using is made up of roughly 3000 CT studies,
+              from twelve locations and across six continents. The presence,
+              vertebral level, and location of any cervical spine fractures have
+              been annotated by experts in spine radiology. The American Society
+              of Neuroradiology (ASNR), the Radiological Society of North
+              America (RSNA), and the American Society of Spine Radiology all
+              contributed to the dataset (ASSR).
+            </p>
+            <p>
+              EfficientNet is a convolutional neural network architecture and
+              scaling method that uniformly scales all dimensions of
+              depth/width/resolution using a compound coefficient. Unlike
+              conventional practice that arbitrary scales these factors, the
+              EfficientNet scaling method uniformly scales network width, depth,
+              and resolution with a set of fixed scaling coefficients.
+            </p>
+          </div>
+          <div class="col-lg-6">
+            <img
+              class="dataset"
+              src="../static/images/dataset.png"
+              alt="dataset image"
+            />
+            <img
+              class="slices"
+              src="../static/images/slices.png"
+              alt="slices"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../static/javascript/code.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  </body>
+</html>

@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index1.html')
 
 @app.route('/upload', methods=['POST'])
 def upload():
@@ -43,7 +43,7 @@ def upload():
                 if not os.path.exists(image_path):
                     image_file = None
 
-    return render_template('results.html', rows=rows, image_file=image_file)
+    return render_template('result1.html', rows=rows, image_file=image_file)
 
 
 
